@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.theme-1.1.1.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+        <script src="js/kitte2.js"></script>
+        
+        <title>kitte</title>
+        <meta name="description" content="">
+        <meta name="author" content="ayumi">
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    </head>
+
+    <body>
+        <!-- トップページ --->
+        <div data-role="page" id="topPage">
+            
+            <div data-role="header">
+                <h2>切手組合せ</h2>
+            </div>
+        
+            <div data-role="content">
+                <form id="search_form">
+                <div data-role="fieldcontain">
+                    <!--<label for="input_number">金額</label>-->
+                    <input type="number" name="num" id="input_number" value="" class="required" placeholder="金額を入力" />
+                    <a href="#resultPage" data-role="button" data-icon="search" id="searchButton">組合せを調べる！</a></br>
+                    
+                </div>
+                </form>
+            </div>
+            
+            <div data-role="footer">
+                <a href="#settingPage" data-role="button">設定</a>
+            </div>
+
+        </div>
+        
+        <!-- 設定画面 -->
+        <!-- TODO:設定画面はトップ画面でポップアップによる複数選択で選ばせる（p133） -->
+        <div data-role="page" id="settingPage">
+
+           <div data-role="header">
+               <h1>使用切手設定</h1>
+           </div> 
+           
+           <div data-role="content" id="kitte_list">
+                <fieldset data-role="controlgroup">
+                    <label for="stamp1">1円切手</label>
+                    <input id="stamp1" type="checkbox" name="stamp" value="1">
+                    <label for="stamp3">3円切手</label>
+                    <input id="stamp3" type="checkbox" name="stamp" value="3">
+                    <label for="stamp5">5円切手</label>
+                    <input id="stamp5" type="checkbox" name="stamp" value="5">
+                    <label for="stamp10">10円切手</label>
+                    <input id="stamp10" type="checkbox" name="stamp" value="10">
+                    <label for="stamp20">20円切手</label>
+                    <input id="stamp20" type="checkbox" name="stamp" value="20">
+                    <label for="stamp30">30円切手</label>
+                    <input id="stamp30" type="checkbox" name="stamp" value="30">
+                    <label for="stamp40">40円切手</label>
+                    <input id="stamp40" type="checkbox" name="stamp" value="40">
+                    <label for="stamp50">50円切手</label>
+                    <input id="stamp50" type="checkbox" name="stamp" value="50">
+                    <label for="stamp70">70円切手</label>
+                    <input id="stamp70" type="checkbox" name="stamp" value="70">
+                    <label for="stamp80">80円切手</label>
+                    <input id="stamp80" type="checkbox" name="stamp" value="80">
+                    <label for="stamp90">90円切手</label>
+                    <input id="stamp90" type="checkbox" name="stamp" value="90">
+                    <label for="stamp100">100円切手</label>
+                    <input id="stamp100" type="checkbox" name="stamp" value="100">
+                    <label for="stamp110">110円切手</label>
+                    <input id="stamp110" type="checkbox" name="stamp" value="110">
+                    <label for="stamp120">120円切手</label>
+                    <input id="stamp120" type="checkbox" name="stamp" value="120">
+                    <label for="stamp130">130円切手</label>
+                    <input id="stamp130" type="checkbox" name="stamp" value="130">
+                    <label for="stamp140">140円切手</label>
+                    <input id="stamp140" type="checkbox" name="stamp" value="140">
+                    <label for="stamp160">160円切手</label>
+                    <input id="stamp160" type="checkbox" name="stamp" value="160">
+                    <label for="stamp200">200円切手</label>
+                    <input id="stamp200" type="checkbox" name="stamp" value="200">
+                    <label for="stamp270">270円切手</label>
+                    <input id="stamp270" type="checkbox" name="stamp" value="270">
+                    <label for="stamp300">300円切手</label>
+                    <input id="stamp300" type="checkbox" name="stamp" value="300">
+                    <label for="stamp350">350円切手</label>
+                    <input id="stamp350" type="checkbox" name="stamp" value="350">
+                    <label for="stamp420">420円切手</label>
+                    <input id="stamp420" type="checkbox" name="stamp" value="420">
+                    <label for="stamp500">500円切手</label>
+                    <input id="stamp500" type="checkbox" name="stamp" value="500">
+                    <label for="stamp1000">1000円切手</label>
+                    <input id="stamp1000" type="checkbox" name="stamp" value="1000">
+               </fieldset>
+               <a href="#topPage" data-role="button" id="okButton" data-inline="true">ＯＫ</a>
+               <!--<a data-rel="back" data-role="button" id="cancelButton" data-inline="true">キャンセル</a>-->
+           </div>
+        </div>
+
+        <!-- 結果表示ページ -->
+        <div data-role="page" id="resultPage">
+
+            <div data-role="header">
+                <h1>計算結果</h1>
+            </div>
+
+            <div data-role="content">
+                <table id="resultList">
+                </table>
+                <a data-role="button" href="#topPage">
+                    閉じる
+                </a>
+            </div>
+
+        </div>
+    </body>
+</html>
